@@ -1,8 +1,6 @@
 fun main() {
     fun formatValue(string: String): Int {
-        var value = string
-
-        value = value.filter { it.isDigit() }
+        var value = string.filter { it.isDigit() }
         when {
             value.length < 2 -> {
                 value += value
@@ -40,10 +38,8 @@ fun main() {
                 "nine" to "n9e",
             )
 
-        var string: String
-
         input.forEach { inputValue ->
-            string = inputValue
+            var string = inputValue
 
             digits.forEach { digit ->
                 string = string.replace(digit.key, digit.value)
