@@ -1,6 +1,7 @@
 fun main() {
     fun formatValue(string: String): Int {
         var value = string.filter { it.isDigit() }
+
         when {
             value.length < 2 -> {
                 value += value
@@ -14,17 +15,17 @@ fun main() {
     }
 
     fun part1(input: List<String>): Int {
-        val inputDigits: MutableList<Int> = mutableListOf()
+        var result = 0
 
         input.forEach { line ->
-            inputDigits.add(formatValue(line))
+            result += formatValue(line)
         }
 
-        return inputDigits.sum()
+        return result
     }
 
     fun part2(input: List<String>): Int {
-        val inputDigits: MutableList<Int> = mutableListOf()
+        var result = 0
         val digits =
             mapOf(
                 "one" to "o1e",
@@ -38,17 +39,17 @@ fun main() {
                 "nine" to "n9e",
             )
 
-        input.forEach { inputValue ->
-            var string = inputValue
+        input.forEach { value ->
+            var string = value
 
             digits.forEach { digit ->
                 string = string.replace(digit.key, digit.value)
             }
 
-            inputDigits.add(formatValue(string))
+            result += formatValue(string)
         }
 
-        return inputDigits.sum()
+        return result
     }
 
     val testInput1 = readInput("Day01/P1_test")
