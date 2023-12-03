@@ -61,13 +61,13 @@ fun main() {
     }
 
     fun part2(input: List<String>): Int {
-        val result: MutableList<Int> = mutableListOf()
+        var result = 0
 
         countCubes(input).forEach { game ->
-            result.add(game.rgb.r * game.rgb.g * game.rgb.b)
+            result += (game.rgb.r * game.rgb.g * game.rgb.b)
         }
 
-        return result.sum()
+        return result
     }
 
     val testInput1 = readInput("Day02/P1_test")
